@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	http://localhost:8080/SpringMVC/test/murotani<br>
+	Hello world!  /test/murotani/
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
