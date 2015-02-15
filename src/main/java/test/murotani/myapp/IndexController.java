@@ -1,10 +1,10 @@
 package test.murotani.myapp;
 
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 /**
  * Handles requests for the application home page.
@@ -37,15 +38,18 @@ public class IndexController {
 		System.out.println(this.context.getRequestURI());
 		System.out.println("className: " + className + "," + "functionName: "+ functionName);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("serverTime", getFormattedDate(locale) );
+		model.addAttribute("test","murotani");
+	
 		
 		//	Bipass the formatted request to WEB-INF/views/test/murtani.jsp
 		return className + "/" + functionName;
 	}
 	
+	private String getFormattedDate(Locale locale){
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		return formattedDate;
+	} 
 }
