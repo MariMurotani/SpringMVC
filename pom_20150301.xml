@@ -61,7 +61,6 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.15</version>
-			<scope>runtime</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.mail</groupId>
@@ -80,6 +79,7 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- @Inject -->
@@ -137,8 +137,9 @@
 			<version>4.3.8.Final</version>
 		</dependency>
 
+
 	</dependencies>
-		 	
+	
     <build>
         <plugins>
             <plugin>

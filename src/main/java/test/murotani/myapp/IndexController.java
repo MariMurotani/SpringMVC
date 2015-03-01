@@ -9,11 +9,15 @@ import javax.servlet.jsp.PageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import test.murotani.batch.DataAccessSample;
 
 
 /**
@@ -41,6 +45,12 @@ public class IndexController {
 		model.addAttribute("serverTime", getFormattedDate(locale) );
 		model.addAttribute("test","murotani");
 	
+		// DAO 呼び出しテスト
+		AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("mainContextConfig.xml");
+		DataAccessSample das = applicationContext.getBean(DataAccessSample.class);
+		das.execute();
+		
+		
 		
 		//	Bipass the formatted request to WEB-INF/views/test/murtani.jsp
 		return className + "/" + functionName;
